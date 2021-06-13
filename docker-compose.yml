@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+    course-api:
+        image: courseimage
+        ports:
+            - "8080:8080"
+        networks:
+            - fullstack
+        depends_on:
+            - course-postgres
+        restart: always
+    course-postgres:
+        image: postgres:9.6
+        container_name: course-postgres
+        environment:
+            - POSTGRES_USER=root
+            - POSTGRES_PASSWORD=password
+            - APP_DB_NAME=coursera
+        restart: always
+        ports: 
+            - 5432:5432
+        networks: 
+            - fullstack    
+        volumes:
+            - ./db:/docker-entrypoint-initdb.d/
+networks:
+    fullstack:
+        driver: bridge

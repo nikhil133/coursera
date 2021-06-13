@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "7cbb46f4-0987-451a-9abb-0ed11e10f3ad",
+		"name": "Course Catelog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch Course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/coursera/get/courses?start=0&q=AI",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coursera",
+						"get",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0",
+							"description": "start offset"
+						},
+						{
+							"key": "limit",
+							"value": null,
+							"description": "limit no. of data . Default 10",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "AI",
+							"description": "query= course name|description|author-fullname |default case"
+						},
+						{
+							"key": "qm",
+							"value": null,
+							"description": "query method=course-name| course-desc | author-name| default",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"programming\",\n    \"start\": \"0\",\n    \"limit\": \"20\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/coursera/push/courses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"coursera",
+						"push",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
